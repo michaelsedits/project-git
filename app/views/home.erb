@@ -1,7 +1,7 @@
 <h1>Omaha Code School</h1>
 <h2>Current semester:</h2>
 	<% @klasses.each do |klass| %>
-<h3><%= klass.name %></h3>
+<a href="/class/<%= klass.id %>"><h3><%= klass.name %></h3>
 	<p><%= klass.teacher %></p>
 	<p><%= klass.semester %><p>
 <% end %>

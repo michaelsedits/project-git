@@ -1,0 +1,10 @@
+<form method="post" action="/class/add">
+	<input type="text" name="name">
+	<input type="text" name="semester">
+	<% 10.times do |i| %>
+	<input type="text" name="student<%= i %>[name]">
+	<input type="text" name="student<%= i %>[grade]">
+	<% end %>
+	
+	<input type="submit" value="Submit">
+</form>
