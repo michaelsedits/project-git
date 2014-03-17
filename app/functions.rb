@@ -1,0 +1,49 @@
+ActiveRecord::Base.establish_connection(
+  :adapter => 'sqlite3',
+  :database => (ENV['RACK_ENV'] == 'test') ? "blog.test" : "blog"
+)
+
+ActiveRecord::Base.logger = Logger.new(STDERR)
+
+ActiveRecord::Schema.define do
+  unless ActiveRecord::Base.connection.tables.include? 'klasses'
+    create_table :klasses do |table|
+      table.column :teacher_id, :integer
+      table.column :student_id, :integer
+      table.column :semester_id, :integer
+      table.column :name, :string
+    end
+  end
+  
+  unless ActiveRecord::Base.connection.tables.include? 'teachers'
+    create_table :teachers do |table|
+      table.column :klass_id, :integer
+      table.column :name, :string
+    end
+  end
+  
+  unless ActiveRecord::Base.connection.tables.include? 'students'
+    create_table :students do |table|
+      table.column :name, :string
+      table.column :teacher_id, :integer
+      table.column :grade_id, :integer
+    end
+  end
+  
+  unless ActiveRecord::Base.connection.tables.include? 'semesters'
+    create_table :semesters do |table|
+      table.column :spring_or_fall, :boolean
+      table.column :year, :integer
+    end
+  end
+  
+  unless ActiveRecord::Base.connection.tables.include? 'grades'
+    create_table :grades do |table|
+      table.column :klass_id, :integer
+      table.column :student_id, :integer
+      table.column :semester_id, :integer
+      table.column :grade, :integer
+    end
+  end
+  
+end
