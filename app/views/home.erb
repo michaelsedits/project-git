@@ -1,0 +1,14 @@
+<h1>Omaha Code School</h1>
+<h2>Current semester:</h2>
+	<% @klasses.each do |klass| %>
+<h3><%= klass.name %></h3>
+	<p><%= klass.teacher %></p>
+	<p><%= klass.semester %><p>
+<% end %>
+<h2>Past semesters:</h2>
+<% @past_semesters.each do |semester| %>
+<% if semester.spring_or_fall %>
+	<p><a href="/semester/<%= semester.id %>"><%= "Spring" %> <%= semester.year %></a></p>
+<% else %>
+	<p><a href="/semester/<%= semester.id %>"><%= "Fall" %> <%= semester.year %></a></p>
+<% end %>

@@ -1,3 +1,7 @@
+require './klass.rb'
+require './student.rb'
+require './teacher.rb'
+
 ActiveRecord::Base.establish_connection(
   :adapter => 'sqlite3',
   :database => (ENV['RACK_ENV'] == 'test') ? "blog.test" : "blog"
