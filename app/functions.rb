@@ -34,6 +34,7 @@ ActiveRecord::Schema.define do
     create_table :semesters do |table|
       table.column :spring_or_fall, :boolean
       table.column :year, :integer
+      table.column :current, :boolean
     end
   end
   
@@ -41,7 +42,6 @@ ActiveRecord::Schema.define do
     create_table :grades do |table|
       table.column :klass_id, :integer
       table.column :student_id, :integer
-      table.column :semester_id, :integer
       table.column :grade, :integer
     end
   end
