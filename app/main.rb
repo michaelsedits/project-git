@@ -8,29 +8,41 @@ require_relative './functions'
 
 class System < Sinatra::Base
   get "/" do
-    @klasses = Klass.where('semester_id.current = ?', 't')
+    @semester = Semester.where('current = ?', 't')
+    @klasses = Klass.where('semester_id = ?', '@semester')
     
     @past_semesters = Semester.where('current = ?', 'f')
     erb :home
   end
   
-  get "class/add" do
+  get "/add_class" do
     erb :add_class
   end
   
-  post "class/add"
-  
-  klass = Klass.new({
-    student.each do |student|
-      Student.new(:name => params[:name], :grade => params[:grade])
-    end
+  post "/add_class" do
+    @student_id = Student.find_by_name(params[:student])
+    @teacher_id = Teacher.find_by_name(params[:teacher])
+    @semester_id = Semester.where('year = ?', '#{params[:year]}').where('spring_or_fall = ?', '#{params[:spring_or_fall]}')
+    
+    klass = Klass.new({
+      :name => params[:name]
+      :teacher_id => @teacher_id
+      :semester_id => @semester_id
+      params[:student].each {|x| @student_id => x }
+      params[:grade].each {|x| @student_id => x }
     })
-    student.save
-    :name => params[:name]
-  })
-  klass.save
+    klass.save
   
-  redirect "/"
-  
+    redirect "/"
   end
+  
+  post "add_teacher" do
+    teacher = Teacher.new({
+      :name => params[:name]
+      })
+      teacher.save
+      
+      redirect "/"
+  end
+  
 end

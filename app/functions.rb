@@ -1,10 +1,11 @@
-require './klass.rb'
-require './student.rb'
-require './teacher.rb'
+require_relative './klass.rb'
+require_relative './student.rb'
+require_relative './teacher.rb'
+require_relative './grade.rb'
 
 ActiveRecord::Base.establish_connection(
   :adapter => 'sqlite3',
-  :database => (ENV['RACK_ENV'] == 'test') ? "blog.test" : "blog"
+  :database => (ENV['RACK_ENV'] == 'test') ? "system.test" : "system"
 )
 
 ActiveRecord::Base.logger = Logger.new(STDERR)

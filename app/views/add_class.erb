@@ -1,10 +1,10 @@
-<form method="post" action="/class/add">
-	<input type="text" name="name">
-	<input type="text" name="semester">
-	<% 10.times do |i| %>
-	<input type="text" name="student<%= i %>[name]">
-	<input type="text" name="student<%= i %>[grade]">
-	<% end %>
-	
+<form method="post" action="/add_class">
+	Class name: <input type="text" name="name"><br>
+	Teacher: <input type="text" name="teacher"><br>
+	Spring or Fall? <input type="text" name="semester"><br>
+	Year: <input type="text" name="year"><br>
+	Students (comma-separated): <input type="text" name="student[]" placeholder="Enter in alphabetical order according to students' last names."><br>
+	Grades (comma-separated): <input type="text" name="grade[]" placeholder="Enter in alphabetical order according to students' last names."><br>
+
 	<input type="submit" value="Submit">
 </form>
