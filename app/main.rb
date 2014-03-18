@@ -20,17 +20,18 @@ class System < Sinatra::Base
       @klasses=Klass.where((params[:id]) => semester_id)
       erb :display_classes
   end
-  #
-  # def get_current_semester
-  #   max_year=Semester.maximum('year')
-  #   the_current_semester=Semester.where(:year=>max_year)
-  #   if the_current_semester.length>1
-  #    the_current_semester.each do |sem|    
-  #       if sem.term=="Spring"
-  #            sem.current=true
-  #       elsif sem.term=="Fall"
-  #            sem.current=true    
-  #       end
-  #    end
-  #   end
-  # end
+
+  
+  def get_current_semester
+    max_year=Semester.maximum('year')
+    the_current_semester=Semester.where(:year=>max_year)
+    if the_current_semester.length>1
+     the_current_semester.each do |sem|    
+        if sem.term=="Spring"
+             sem.current=true
+        elsif sem.term=="Fall"
+             sem.current=true    
+        end
+     end
+    end
+  end
