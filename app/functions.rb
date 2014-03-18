@@ -39,7 +39,7 @@ ActiveRecord::Schema.define do
   
   unless ActiveRecord::Base.connection.tables.include? 'semesters'
     create_table :semesters do |table|
-      table.column :spring_or_fall, :boolean
+      table.column :spring_or_fall, :string
       table.column :year, :integer
       table.column :current, :boolean
     end
