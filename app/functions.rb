@@ -1,5 +1,6 @@
 ActiveRecord::Base.establish_connection(
-  :adapter => 'sqlite3',
+  :adapter => 'sqlite3',require "functions"
+  
   :database => (ENV['RACK_ENV'] == 'test') ? "blog.test" : "blog"
 )
 

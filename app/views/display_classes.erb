@@ -1,0 +1,8 @@
+<h5>Classes</h5>
+<table>
+<tr><td>Class Name<td>Year</td><td>Term</td></tr>
+<<% @klasses.each do |klass| %>>
+<tr><td>klass.name</td><td><a href="class/<%= klass.id %>">
+	<%= klass.year %></td<td>
+<% if klass.spring_or_fall==true %>Spring<% else %>Fall<%end%></a></td</tr>>
+</table>

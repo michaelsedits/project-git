@@ -1,7 +1,5 @@
-class Student
-  
-  def get_klasses(student_id)
-    @classes
-    
-  end
+class Student < ActiveRecord::Base
+  has_many :classes
+  has_many :teachers
+  has_many :semesters
 end

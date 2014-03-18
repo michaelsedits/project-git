@@ -1,0 +1,8 @@
+<h5>Semesters</h5>
+<table>
+<tr><td>Year</td><td>Term</td></tr>
+<<% @semester.each do |semester| %>>
+<tr><td><a href="/<%= semester.year% >/<%= semester.spring_or_fall %>">
+	<%= semester.year %></td<td>
+<% if semester.spring_or_fall==true %>Spring<% else %>Fall<%end%></a></td</tr>>
+</table>
