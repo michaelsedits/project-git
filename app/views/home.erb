@@ -1,0 +1,21 @@
+<h1>University of Code</h1>
+<h2>Current semester:</h2>
+	<% @klasses.each do |klass| %>
+	<a href="/class/<%= klass.id %>"><h3><%= klass.name %></h3>
+	<p><%= klass.teacher_id.name %></p>
+	<p><%= klass.semester_id.spring_or_fall %> <%= klass.semester_id.year %><p>
+<% end %>
+<h2><a href="/add_class">Add a new class</a></h2>
+<h2>Add a new teacher</h2>
+<form method="post" action="/add_teacher">
+	Full name: <input type="text" name="name"><br>
+
+	<input type="submit" value="Submit">
+</form>
+<h2>Add students:</h2>
+<!-- Need to add the form here that posts to "/add_students". -->
+<h2>Past semesters:</h2>
+	<% @past_semesters.each do |semester| %>
+	<p><a href="/semester/<%= semester.id %>"><%= semester.spring_or_fall %> <%= semester.year %></a></p>
+	<p><a href="/semester/<%= semester.id %>"><%= "Fall" %> <%= semester.year %></a></p>
+<% end %>
