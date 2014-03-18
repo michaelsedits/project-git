@@ -26,9 +26,11 @@ class System < Sinatra::Base
   #   the_current_semester=Semester.where(:year=>max_year)
   #   if the_current_semester.length>1
   #    the_current_semester.each do |sem|    
-  #       if sem.term=="Spring" ? sem.current=true : sem.current=false    
+  #       if sem.term=="Spring"
+  #            sem.current=true
+  #       elsif sem.term=="Fall"
+  #            sem.current=true    
+  #       end
   #    end
   #   end
   # end
-
-end
