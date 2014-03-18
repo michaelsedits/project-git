@@ -12,6 +12,10 @@
 
 	<input type="submit" value="Submit">
 </form>
+<% @teachers.each do |teacher| %>
+<p><%= teacher.name %><p>
+<% end %>
+<p>
 <h2>Add students:</h2>
 <!-- Need to add the form here that posts to "/add_students". -->
 <h2>Past semesters:</h2>
