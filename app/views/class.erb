@@ -2,7 +2,7 @@
 
 <p>Teacher: <%= @klass.teacher.name %></p>
 
-<p>Semester: <%= @klass.semester.term %>, Year: <%= @klass.semester.year %></p>
+<p>Semester: <%= @klass.semester.spring_or_fall %>, Year: <%= @klass.semester.year %></p>
 
 <% @grade.each do |l| %>
 <ul>
