@@ -1,0 +1,17 @@
+<h1>Class name: <%= @klass.name %></h1>
+
+<p>Teacher: <%= @klass.teacher.name %></p>
+
+<p>Semester: <%= @klass.semester.spring_or_fall %>, Year: <%= @klass.semester.year %></p>
+
+<% @grade.each do |l| %>
+<ul>
+	<li>Student Name: <%= l.student.name %> Grade (out of 100): <%= l.student.grade %></li>
+</ul>
+<% end %>
+
+<!-- <% @klass.students.each do |l| %>
+<ul>
+	<li>Student Name: <%= l.grades.student.name %> Grade (out of 100): <%= l.grades.grade %></li>
+</ul>
+<% end %> -->
