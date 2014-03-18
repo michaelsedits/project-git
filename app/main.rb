@@ -5,7 +5,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 
 require_relative './functions'
-
+#small changes
 class System < Sinatra::Base
   #student - name, teacher_id, grade_id
   post "/add_students" do
@@ -17,11 +17,11 @@ class System < Sinatra::Base
    
   get "/semester/:id" do
     @semester=Semester.where(:year=>params[:semester.year], :term=>params[:semester_term])
-    @klasses=Klass.where(:id => semester_id)
+    @klasses=Klass.where(params[:id] => semester_id)
     erb :semester
   end
   
   get "/semester/:year/:spring_or_fall" do
-    @klasses=Klass.where(params[:year]=>:year, params[:spring_or_fall]=>:spring_or_fall)  
+    @klasses=Klass.where(:year=>params[:year], :spring_or_fall=> params[:spring_or_fall])  
   end
 end
