@@ -14,9 +14,13 @@ class System < Sinatra::Base
     @past_semesters = Semester.where('current = ?', 'f')
     erb :home
   end
-  
+
   get "/add_class" do
     erb :add_class
+  end
+  
+  get "/add_teacher" do
+    erb :add_teacher
   end
   
   post "/add_class" do
@@ -36,7 +40,7 @@ class System < Sinatra::Base
     redirect "/"
   end
   
-  post "add_teacher" do
+  post "/add_teacher" do
     teacher = Teacher.new({
       :name => params[:name]
       })
@@ -44,5 +48,5 @@ class System < Sinatra::Base
       
       redirect "/"
   end
-  
+
 end

@@ -2,9 +2,11 @@ require_relative './klass.rb'
 require_relative './student.rb'
 require_relative './teacher.rb'
 require_relative './grade.rb'
+require_relative './semester.rb'
 
 ActiveRecord::Base.establish_connection(
-  :adapter => 'sqlite3',
+  :adapter => 'sqlite3',require "functions"
+  
   :database => (ENV['RACK_ENV'] == 'test') ? "system.test" : "system"
 )
 
