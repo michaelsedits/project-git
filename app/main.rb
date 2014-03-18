@@ -9,19 +9,26 @@ require_relative './functions'
 class System < Sinatra::Base
   #student - name, teacher_id, grade_id
   post "/add_students" do
-    params.each do |new_student|
-       Student.create(:name=>new_student[:name], :teacher_id =>new_student[:teacher_id], :grade_id =>new_student[:grade_id]) 
-     end
-  end
+      params.each do |new_student|
+         Student.create({:name=>new_student[:name], :teacher_id =>new_student[:teacher_id], :grade_id =>new_student[:grade_id]}) 
+       end
+    end
   
    
   get "/semester/:id" do
-    @semester=Semester.where(:year=>params[:semester.year], :term=>params[:semester_term])
-    @klasses=Klass.where(params[:id] => semester_id)
-    erb :semester
+      @semester = Semester.find(params[:id])
+      @klasses=Klass.where((params[:id]) => semester_id)
+      erb :display_classes
   end
-  
-  get "/semester/:year/:spring_or_fall" do
-    @klasses=Klass.where(:year=>params[:year], :spring_or_fall=> params[:spring_or_fall])  
-  end
+  #
+  # def get_current_semester
+  #   max_year=Semester.maximum('year')
+  #   the_current_semester=Semester.where(:year=>max_year)
+  #   if the_current_semester.length>1
+  #    the_current_semester.each do |sem|    
+  #       if sem.term=="Spring" ? sem.current=true : sem.current=false    
+  #    end
+  #   end
+  # end
+
 end
